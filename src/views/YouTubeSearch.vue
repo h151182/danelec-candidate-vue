@@ -19,7 +19,10 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn>Search</v-btn>
+  <!--
+  added @click
+  -->
+        <v-btn @click="search">Search</v-btn>
       </v-card-actions>
     </v-card>
 
