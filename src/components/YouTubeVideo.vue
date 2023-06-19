@@ -1,7 +1,7 @@
 <template>
   <v-list-item link :href="linkUrl" target="_blank">
     <v-list-item-avatar size="100">
-      <v-img :src="imageSrc"></v-img>
+      <v-img :src="imageUrl"></v-img>
     </v-list-item-avatar>
 
     <v-list-item-content>
@@ -28,7 +28,7 @@ export default class YouTubeVideo extends Vue {
 
   mounted() {
     this.title = this.video.snippet.title;
-    this.imageUrl = this.video.snippet.thumbnails.default.src;
+    this.imageUrl = this.video.snippet.thumbnails.default.url;
     this.description = this.video.snippet.description;
     this.id = this.video.id.videoId;
     this.linkUrl = config.youtubeWatchBaseUrl + this.id;
