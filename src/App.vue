@@ -13,7 +13,10 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link to="/YouTube">
+          <!--
+  replaced typo link to="/YouTube" with link to correct path "/YouTubeSearch"
+  -->
+        <v-list-item link to="/YouTubeSearch">
           <v-list-item-action>
             <v-icon>mdi-youtube</v-icon>
           </v-list-item-action>
