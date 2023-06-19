@@ -1,6 +1,9 @@
 <template>
   <v-list-item link :href="linkUrl" target="_blank">
     <v-list-item-avatar size="100">
+  <!--
+  replaced typo imageSrc with imageUrl
+  -->
       <v-img :src="imageUrl"></v-img>
     </v-list-item-avatar>
 
@@ -26,6 +29,7 @@ export default class YouTubeVideo extends Vue {
   id: any = "";
   linkUrl: any = "";
 
+// replaced typo in imageUrl from "src" to "url"
   mounted() {
     this.title = this.video.snippet.title;
     this.imageUrl = this.video.snippet.thumbnails.default.url;
