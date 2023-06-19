@@ -1,7 +1,10 @@
 <template>
   <v-app>
     <v-navigation-drawer v-model="showMenu" app>
-      <v-list dense v-if="!showMenu">
+    <!--
+  replaced v-if="!showMenu" with v-if="showMenu"
+  -->
+      <v-list dense v-if="showMenu">
         <v-list-item link to="/">
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
