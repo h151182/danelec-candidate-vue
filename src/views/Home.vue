@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="6" offset="3" lg="4" offset-lg="4">
-      <HelloWorld />
+      <HelloCandidate />
     </v-col>
   </v-row>
 </template>
