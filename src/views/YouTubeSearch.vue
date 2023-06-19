@@ -2,7 +2,7 @@
   <div>
     <v-card class="elevation-12">
       <v-toolbar color="primary" dark flat>
-         <!--
+  <!--
   replaced typo YoutToube with YouTube
   -->
         <v-toolbar-title>YouTube Search</v-toolbar-title>
@@ -53,7 +53,10 @@ export default class YouTubeSearch extends Vue {
   r: any = null;
   v: any = [];
 
+
+//clears the video list when called 
   search() {
+    this.v = []
     axios
       .get(config.youtubeBaseUrl, {
         params: {
