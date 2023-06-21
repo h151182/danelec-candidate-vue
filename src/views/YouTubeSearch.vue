@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <!--
+  added event for @keydown.enter
+  -->
+  <div @keydown.enter="search">
     <v-card class="elevation-12">
       <v-toolbar color="primary" dark flat>
   <!--
@@ -25,7 +28,7 @@
         <v-btn @click="search">Search</v-btn>
       </v-card-actions>
     </v-card>
-
+    
     <v-alert type="info" v-if="v.length > 0">
       Found {{ v.length }} videos
     </v-alert>
@@ -36,6 +39,7 @@
       </template>
     </v-list>
   </div>
+ 
 </template>
 
 <script lang="ts">
