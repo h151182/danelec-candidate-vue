@@ -9,6 +9,7 @@
 
     <v-list-item-content>
       <v-list-item-title>{{ title }}</v-list-item-title>
+      <v-list-item-subtitle>{{ "Published " + datePublished }}</v-list-item-subtitle>
       <v-list-item-subtitle>{{ description }}</v-list-item-subtitle>
     </v-list-item-content>
     <VideoView v-if="showModal" v-model="embedUrl"/>
@@ -20,6 +21,7 @@
 import { Component, Model, Vue } from "vue-property-decorator";
 import VideoView from "@/components/VideoView.vue"
 import config from "@/config";
+import moment from 'moment';
 
 @Component({ 
   name: "YouTubeVideo", 
@@ -30,6 +32,7 @@ export default class YouTubeVideo extends Vue {
  showModal: boolean = false;
   title: any = "";
   imageUrl: any = "";
+  datePublished: any = "";
   description: any = "";
   id: any = "";
   linkUrl: any = "";
@@ -38,6 +41,7 @@ export default class YouTubeVideo extends Vue {
 // replaced typo in imageUrl from "src" to "url"
   mounted() {
     this.title = this.video.snippet.title;
+    this.datePublished = this.formatDate(this.video.snippet.publishedAt);
     this.imageUrl = this.video.snippet.thumbnails.default.url;
     this.description = this.video.snippet.description;
     this.id = this.video.id.videoId;
@@ -46,6 +50,13 @@ export default class YouTubeVideo extends Vue {
     // added from viewEmbedded() 
     var videoId = this.id.substring(this.id.lastIndexOf("/") + 1);
     this.embedUrl = config.youtubeEmbedBaseUrl + videoId;
+  }
+
+// method for formating date published using moment
+  formatDate(date: Date) {
+     if (date) {
+           return moment(String(date)).format('DD.MM.YYYY')
+          }
   }
 
 }

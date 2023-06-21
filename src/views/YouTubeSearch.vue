@@ -28,7 +28,7 @@
   -->
     <v-container fluid>
       <div>Choose number of videos</div>
-    <v-radio-group v-model="max" inline>
+    <v-radio-group inline v-model="max">
   <v-radio label="5" value=5></v-radio>
   <v-radio label="10" value=10></v-radio>
   <v-radio label="20" value=20></v-radio>
@@ -67,7 +67,7 @@ import config from "@/config";
   components: { YouTubeVideo },
 })
 export default class YouTubeSearch extends Vue {
-  q: string = "";
+  q: string = "cute dog";
   r: any = null;
   v: any = [];
   max: number = 5;
@@ -82,7 +82,7 @@ export default class YouTubeSearch extends Vue {
           q: this.q,
           maxResults: this.max,
           key: config.youtubeApiKey,
-          part: "snippet",
+          part: "snippet"
         },
       })
       .then((res) => {
@@ -90,8 +90,9 @@ export default class YouTubeSearch extends Vue {
       });
   }
 
+//added a search on mount 
   mounted(){
-  this.q = ""
+  //this.search()
   }
 
 

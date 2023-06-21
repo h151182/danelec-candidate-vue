@@ -18,5 +18,7 @@ export default class VideoView extends Vue {
   @Model() embedUrl: any; 
 
 
+
+
 }
 </script>
