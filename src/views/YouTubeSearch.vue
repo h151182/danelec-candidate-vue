@@ -22,6 +22,19 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
+
+  <!--
+  added radio group for maxResult
+  -->
+    <v-container fluid>
+      <div>Choose number of videos</div>
+    <v-radio-group v-model="max" inline>
+  <v-radio label="5" value=5></v-radio>
+  <v-radio label="10" value=10></v-radio>
+  <v-radio label="20" value=20></v-radio>
+</v-radio-group>
+        </v-container>
+
   <!--
   added @click
   -->
@@ -38,7 +51,7 @@
         <YouTubeVideo :key="index" v-model="item.video"></YouTubeVideo>
       </template>
     </v-list>
-    
+
   </div>
  
 </template>
@@ -57,6 +70,7 @@ export default class YouTubeSearch extends Vue {
   q: string = "";
   r: any = null;
   v: any = [];
+  max: number = 5;
 
 
 //clears the video list when called 
@@ -66,6 +80,7 @@ export default class YouTubeSearch extends Vue {
       .get(config.youtubeBaseUrl, {
         params: {
           q: this.q,
+          maxResults: this.max,
           key: config.youtubeApiKey,
           part: "snippet",
         },
@@ -74,6 +89,11 @@ export default class YouTubeSearch extends Vue {
         this.r = res.data;
       });
   }
+
+  mounted(){
+  this.q = ""
+  }
+
 
   @Watch("r")
   Update() {
