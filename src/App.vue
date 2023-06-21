@@ -1,10 +1,12 @@
 <template>
-  <v-app>
+  <v-app >
     <v-navigation-drawer v-model="showMenu" app>
     <!--
   replaced v-if="!showMenu" with v-if="showMenu"
+  closes drawer when click 
   -->
-      <v-list dense v-if="showMenu">
+  <div @click="showMenu = !showMenu" >
+      <v-list dense v-if="showMenu" >
         <v-list-item link to="/">
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
@@ -16,7 +18,7 @@
           <!--
   replaced typo link to="/YouTube" with link to correct path "/YouTubeSearch"
   -->
-        <v-list-item link to="/YouTubeSearch">
+        <v-list-item link to="/YouTubeSearch" >
           <v-list-item-action>
             <v-icon>mdi-youtube</v-icon>
           </v-list-item-action>
@@ -25,6 +27,7 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      </div>
     </v-navigation-drawer>
 
     <v-app-bar app color="indigo" dark>
