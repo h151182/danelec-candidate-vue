@@ -1,11 +1,14 @@
 <template>
   <v-app >
-    <v-navigation-drawer v-model="showMenu" app>
+      <!--
+  made drawer temporary to get backdrop and close @click 
+  -->
+    <v-navigation-drawer v-model="showMenu" app
+    temporary>
     <!--
   replaced v-if="!showMenu" with v-if="showMenu"
-  closes drawer when click 
   -->
-  <div @click="showMenu = !showMenu" >
+  
       <v-list dense v-if="showMenu" >
         <v-list-item link to="/">
           <v-list-item-action>
@@ -27,7 +30,7 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-      </div>
+  
     </v-navigation-drawer>
 
     <v-app-bar app color="indigo" dark>
