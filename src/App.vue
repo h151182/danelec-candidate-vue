@@ -8,7 +8,6 @@
     <!--
   replaced v-if="!showMenu" with v-if="showMenu"
   -->
-  
       <v-list dense v-if="showMenu" >
         <v-list-item link to="/">
           <v-list-item-action>

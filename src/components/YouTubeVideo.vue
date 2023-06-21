@@ -1,5 +1,5 @@
 <template>
-  <v-list-item link :href="linkUrl" target="_blank">
+  <v-list-item @click="showModal = !showModal">
     <v-list-item-avatar size="100">
   <!--
   replaced typo imageSrc with imageUrl
@@ -11,23 +11,29 @@
       <v-list-item-title>{{ title }}</v-list-item-title>
       <v-list-item-subtitle>{{ description }}</v-list-item-subtitle>
     </v-list-item-content>
+    <VideoView v-if="showModal" v-model="embedUrl"/>
   </v-list-item>
+  
 </template>
 
 <script lang="ts">
 import { Component, Model, Vue } from "vue-property-decorator";
+import VideoView from "@/components/VideoView.vue"
 import config from "@/config";
-// import actions from "@/actions";
 
-@Component({ name: "YouTubeVideo" })
+@Component({ 
+  name: "YouTubeVideo", 
+  components: { VideoView }})
 export default class YouTubeVideo extends Vue {
   @Model() video!: any;
 
+ showModal: boolean = false;
   title: any = "";
   imageUrl: any = "";
   description: any = "";
   id: any = "";
   linkUrl: any = "";
+  embedUrl: any = "";
 
 // replaced typo in imageUrl from "src" to "url"
   mounted() {
@@ -36,12 +42,11 @@ export default class YouTubeVideo extends Vue {
     this.description = this.video.snippet.description;
     this.id = this.video.id.videoId;
     this.linkUrl = config.youtubeWatchBaseUrl + this.id;
+
+    // added from viewEmbedded() 
+    var videoId = this.id.substring(this.id.lastIndexOf("/") + 1);
+    this.embedUrl = config.youtubeEmbedBaseUrl + videoId;
   }
 
-  // viewEmbedded() {
-  //     var videoId = this.id.substring(this.id.lastIndexOf("/") + 1);
-  //     var embedUrl = config.youtubeEmbedBaseUrl + videoId;
-  //     actions.showVideoModal.dispatch({src: embedUrl, height: 400, width: 300});
-  // }
 }
 </script>

@@ -38,6 +38,7 @@
         <YouTubeVideo :key="index" v-model="item.video"></YouTubeVideo>
       </template>
     </v-list>
+    
   </div>
  
 </template>
