@@ -1,3 +1,8 @@
+  <!--
+  renders iframe within a v-card 
+  inherits embedUrl from parent YouTubeVideo
+  -->
+
 <template>
  <v-sheet
     width="auto"
@@ -14,11 +19,6 @@ import { Component, Model, Vue } from "vue-property-decorator";
 
 @Component({ name: "VideoView" })
 export default class VideoView extends Vue {
-  @Model() showModal!: boolean;
   @Model() embedUrl: any; 
-
-
-
-
 }
 </script>

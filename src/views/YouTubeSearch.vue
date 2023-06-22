@@ -29,12 +29,11 @@
     <v-container fluid>
       <div>Choose number of videos</div>
     <v-radio-group inline v-model="max">
-  <v-radio label="5" value=5></v-radio>
+  <v-radio default label="5" value=5></v-radio>
   <v-radio label="10" value=10></v-radio>
   <v-radio label="20" value=20></v-radio>
 </v-radio-group>
         </v-container>
-
   <!--
   added @click
   -->
@@ -92,7 +91,7 @@ export default class YouTubeSearch extends Vue {
 
 //added a search on mount 
   mounted(){
-  //this.search()
+  this.search()
   }
 
 
